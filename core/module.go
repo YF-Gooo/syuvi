@@ -11,6 +11,7 @@ type Module interface {
 	Start(coreCtx context.Context) error
 	Stop() error
 	Destory() error
+	OnEvent(evt Event) error
 }
 
 //模组错误

@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"strconv"
 	"sync"
 )
 
@@ -142,6 +143,7 @@ func (core *Core) EventProcessGroutine() {
 		for i := 0; i < 10; i++ {
 			select {
 			case evtSeg[i] = <-core.evtBuf:
+				core.modules["c1"].OnEvent(Event{"test", strconv.Itoa(i)})
 			case <-core.ctx.Done():
 				return
 			}
