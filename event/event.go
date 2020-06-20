@@ -1,6 +1,7 @@
-package core
+package event
 
 type Event struct {
+	Target  string
 	Source  string
 	Content string
 }

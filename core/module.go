@@ -3,15 +3,17 @@ package core
 import (
 	"context"
 	"strings"
+	"syuvi/event"
 )
 
 //扩展模组
 type Module interface {
-	Init(evtReceiver EventReceiver) error
+	Init(evtReceiver event.EventReceiver) error
 	Start(coreCtx context.Context) error
 	Stop() error
 	Destory() error
-	OnEvent(evt Event) error
+	GetState() int
+	OnEvent(evt event.Event) error
 }
 
 //模组错误
